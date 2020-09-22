@@ -1,4 +1,16 @@
 import string
+
+prv_words=[]
+end_word=None
+
+while True:
+    end_word=input("please enter a new word , en (ok) to finish:  ")
+    if end_word!="ok":
+        prv_words.append(end_word)
+    else:
+        break
+
+
 fname=input("please entre the file's name : ")
 try:
     fhand = open(fname)
@@ -15,10 +27,13 @@ for line in fhand:
         han.append(word)
 
 for word in han:
-    if word not in counts:
-        counts[word] = 1
+    if word in prv_words:
+        continue
     else:
-        counts[word] += 1
+        if word not in counts:
+            counts[word] = 1
+        else:
+            counts[word] += 1
             
 
 lst=list()
